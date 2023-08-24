@@ -1,0 +1,47 @@
+/******************************************************************************
+ *
+ * Module: Common - Platform Types Abstraction
+ *
+ * File Name: time_display.h
+ *
+ * Description: types for AVR
+ *
+ * Date Created: 21/8/2023
+ *
+ * Author: Moustafa Ahmed
+ *
+ *******************************************************************************/
+
+#ifndef TIME_DISPLAY_H_
+#define TIME_DISPLAY_H_
+
+/**-------------------------INCLUDES Section------------------------**/
+
+#include "std_types.h"
+
+/**-------------------------Definitions & Config Section------------**/
+
+
+/**-------------------------Enum Section----------------------------**/
+
+typedef enum
+{
+
+};
+
+/**-------------------------Function Dec. Section-------------------**/
+/*
+ * Description:
+ * Initializing Stepper Motor
+ */
+
+/*-------------------------------------------------------------------*/
+
+/*
+ * Description:
+ * Step the motor in a given direction
+ */
+
+
+/**-------------------------END-------------------------------------**/
+#endif /* TIME_DISPLAY_H_ */

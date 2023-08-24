@@ -1,0 +1,21 @@
+/******************************************************************************
+ *
+ * Module: Common - Platform Types Abstraction
+ *
+ * File Name: Stepper.h
+ *
+ * Description: types for AVR
+ *
+ * Date Created: 13/9/2022
+ *
+ * Author: Moustafa Ahmed
+ *
+ *******************************************************************************/
+
+#ifndef STEPPER_MOTOR_H_
+#define STEPPER_MOTOR_H_
+
+void WheelsDirection(unsigned char Direction); // Receving the Direction from user
+
+
+#endif /* STEPPER_MOTOR_H_ */

@@ -1,0 +1,65 @@
+/******************************************************************************
+ *
+ * Module: Common - Platform Types Abstraction
+ *
+ * File Name: time_display.c
+ *
+ * Description: types for AVR
+ *
+ * Date Created: 21/8/2023
+ *
+ * Author: Moustafa Ahmed
+ *
+ *******************************************************************************/
+
+
+
+
+
+/**-------------------------INCLUDES Section------------------------**/
+#include "Libraries.h"
+#include "time_display.h"
+#include "GPIO.h"
+
+/**-------------------------Function Definition Section-------------**/
+/*
+ * Description:
+ * Initializing Stepper Motor
+ */
+void Stepper_Motor_init()
+{
+	/* Initialize stepper motor pins as outputs */
+	GPIO_setupPinDirection(STEPPER_MOTOR_OUTPUT_PORT, STEPPER_MOTOR_IN1, PIN_OUTPUT);
+	GPIO_setupPinDirection(STEPPER_MOTOR_OUTPUT_PORT, STEPPER_MOTOR_IN2, PIN_OUTPUT);
+	GPIO_setupPinDirection(STEPPER_MOTOR_OUTPUT_PORT, STEPPER_MOTOR_IN3, PIN_OUTPUT);
+	GPIO_setupPinDirection(STEPPER_MOTOR_OUTPUT_PORT, STEPPER_MOTOR_IN4, PIN_OUTPUT);
+}
+/*-------------------------------------------------------------------*/
+/*
+ * Description:
+ * Step the motor in a given direction
+ */
+void stepper_step(Stepper_Motor_State Direction, uint8 Angle)
+{
+	static uint8 step = 0;
+
+	// Calculate the number of steps needed for the specified angle (1 degrees per step)
+	uint8 steps = (Angle * 10) / 10; // Assuming the angle is in tenths of a degree
+
+	// Define stepping sequence for the motor
+	uint8 sequence[4] = {0b0001, 0b0010, 0b0100, 0b1000};
+
+	for (uint8 i = 0; i < steps; i++) {
+		// Update step based on direction
+		step = (step + Direction + 4) % 4;
+
+		// Output the current step to the motor pins
+		PORTC = (PORTC & 0xF0) | sequence[step];
+
+		// Delay to control stepper motor speed (you may need to adjust this delay)
+		_delay_ms(10); // Requires <util/delay.h>
+	}
+
+}
+
+/**---------------------------------END-----------------------------**/

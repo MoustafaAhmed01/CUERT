@@ -1,0 +1,33 @@
+/******************************************************************************
+ *
+ * Module: Common - Platform Types Abstraction
+ *
+ * File Name: Stepper_Motor.h
+ *
+ * Description: types for AVR
+ *
+ * Date Created: 13/9/2022
+ *
+ * Author: Moustafa Ahmed
+ *
+ *******************************************************************************/
+
+#ifndef STEPPER_MOTOR_H_
+#define STEPPER_MOTOR_H_
+
+
+#include "std_types.h"
+
+// Define stepper motor pins
+#define STEPPER_PIN1  PA0
+#define STEPPER_PIN2  PA1
+#define STEPPER_PIN3  PA2
+#define STEPPER_PIN4  PA3
+
+// Initialize stepper motor
+void stepper_init();
+
+// Step the motor in a given direction (1 for clockwise, -1 for counter-clockwise)
+void stepper_step(int8_t direction);
+
+#endif /* STEPPER_MOTOR_H_ */

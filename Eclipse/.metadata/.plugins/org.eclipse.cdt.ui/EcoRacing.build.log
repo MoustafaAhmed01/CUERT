@@ -1,0 +1,44 @@
+02:21:08 **** Incremental Build of configuration Debug for project EcoRacing ****
+make all 
+Building file: ../App/CUERT.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"App/CUERT.d" -MT"App/CUERT.o" -c -o "App/CUERT.o" "../App/CUERT.c"
+In file included from ../App/../Libraries/Libraries.h:22,
+                 from ../App/CUERT.c:20:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../App/CUERT.c: In function 'main':
+../App/CUERT.c:170: warning: passing argument 1 of 'UART_receiveString' discards qualifiers from pointer target type
+../App/CUERT.c:172: warning: passing argument 1 of 'Receive_Check' discards qualifiers from pointer target type
+Finished building: ../App/CUERT.c
+ 
+Building target: EcoRacing.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,EcoRacing.map -mmcu=atmega32 -o "EcoRacing.elf"  ./MCAL/GPIO.o ./MCAL/TIMER.o ./MCAL/UART.o  ./HAL/DcMotor.o ./HAL/LCD.o ./HAL/Stepper_Motor.o  ./App/CUERT.o   
+Finished building target: EcoRacing.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S EcoRacing.elf  >"EcoRacing.lss"
+Finished building: EcoRacing.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex EcoRacing.elf  "EcoRacing.hex"
+Finished building: EcoRacing.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 EcoRacing.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   22338 bytes (68.2% Full)
+(.text + .data + .bootloader)
+
+Data:        101 bytes (4.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+02:21:08 Build Finished. 0 errors, 3 warnings. (took 757ms)
+

@@ -1,0 +1,16 @@
+22:28:20 **** Incremental Build of configuration Debug for project Eco-Racing Project ****
+make all 
+Building file: ../EcoRacing.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"EcoRacing.d" -MT"EcoRacing.o" -c -o "EcoRacing.o" "../EcoRacing.c"
+Finished building: ../EcoRacing.c
+ 
+Building target: Eco-Racing Project.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Eco-Racing Project.map -mmcu=atmega32 -o "Eco-Racing Project.elf"  ./EcoRacing.o ./UART.o   
+avr-gcc.exe: Project.map: No such file or directory
+make: *** [Eco-Racing Project.elf] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+
+22:28:20 Build Failed. 1 errors, 0 warnings. (took 255ms)
+

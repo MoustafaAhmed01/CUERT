@@ -1,0 +1,173 @@
+/******************************************************************************
+ *
+ * Module: Common - Platform Types Abstraction
+ *
+ * File Name: uart.h
+ *
+ * Description: types for AVR
+ *
+ * Date Created: 13/10/2022
+ *
+ * Author: Moustafa Ahmed
+ *
+ *******************************************************************************/
+
+#ifndef UART_H_
+#define UART_H_
+
+
+/**-------------------------INCLUDES Section------------------------**/
+#include "std_types.h"
+/**-------------------------Definitions & Config Section------------**/
+
+/**-------------------------Enum Section----------------------------**/
+typedef enum
+{
+	NORMAL_TR_SPEED,DOUBLE_TR_SPEED
+}UART_trSpeed;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	RECEIVE_INT_EN_OFF,RECEIVE_INT_EN_ON
+}UART_RECEIVE_INT;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	TRANSMIT_INT_EN_OFF,TRANSMIT_INT_EN_ON
+}UART_TRANSMIT_INT;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	EMPTY_INT_EN_OFF,EMPTY_INT_EN_ON
+}UART_EMPTY_INT;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	RECEIVER_EN_OFF,RECEIVER_EN_ON
+}UART_RECEIVER;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	TRANSMITTER_EN_OFF,TRANSMITTER_EN_ON
+}UART_TRANSMITTER;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	FIVE_BIT,SIX_BIT,SEVEN_BIT,EIGHT_BIT,NINE_BIT=7
+}UART_CharSize;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	UCSRAC_REG,UBRRH_REG
+}UART_REG_SELECT;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	ASYNCHRONOUS,SYNCHRONOUS
+}UART_MODE_SELECT;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	DISABLE,RESERVED,ENABLED_EVEN,ENABLED_ODD
+}UART_PARITY_SELECT;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	ONE_BIT,TWO_BIT
+}UART_STOP_BIT_SELECT;
+/*-------------------------------------------------------------------*/
+
+typedef enum
+{
+	A_Sync_RISING_EDGE,Sync_FALLING_EDGE
+}UART_CLOCK_POLARITY;
+/**-------------------------Struct Section--------------------------**/
+/*
+ * Copy this comment before Initializing UART!
+ */
+/*
+ * UART_trSpeed :
+ * UART_RECEIVE_INT :
+ * UART_TRANSMIT_INT :
+ * UART_EMPTY_INT :
+ * UART_RECEIVER :
+ * UART_TRANSMITTER :
+ * UART_CharSize :
+ * UART_REG_SELECT :
+ * UART_MODE_SELECT :
+ * UART_PARITY_SELECT :
+ * UART_STOP_BIT_SELECT :
+ * UART_CLOCK_POLARITY :
+ * baud_rate :
+ *
+ */
+typedef struct
+{
+	UART_trSpeed 			transmitSpeed;
+	UART_RECEIVE_INT		receiverINT;
+	UART_TRANSMIT_INT		transmitterINT;
+	UART_EMPTY_INT			emptyINT;
+	UART_RECEIVER			receiverEN;
+	UART_TRANSMITTER		transmitterEN;
+	UART_CharSize			charSize;
+	UART_REG_SELECT			regSelect;
+	UART_MODE_SELECT		modeSelect;
+	UART_PARITY_SELECT		paritySelect;
+	UART_STOP_BIT_SELECT	stopBitSelect;
+	UART_CLOCK_POLARITY		clockPolatiry;
+	uint32					baud_rate;
+}UART_ConfigType;
+
+/**-------------------------Function Dec. Section-------------------**/
+
+/*
+ * Description:
+ * Initializing everything starting from
+ * UCSRA TO UCSRC
+ * Depends on the user values (Configurable)
+ */
+void UART_init(UART_ConfigType *Config_Ptr);
+/*-------------------------------------------------------------------*/
+
+/*
+ * Description:
+ *
+ */
+void UART_sendByte(const uint8 data);
+/*-------------------------------------------------------------------*/
+
+/*
+ * Description:
+ *
+ */
+uint8 UART_recieveByte(void);
+/*-------------------------------------------------------------------*/
+
+/*
+ * Description:
+ *
+ */
+void UART_sendString(const uint8 *Str);
+/*-------------------------------------------------------------------*/
+
+/*
+ * Description:
+ *
+ */
+void UART_recieveString(uint8 *Str);
+
+/*-------------------------------------------------------------------*/
+
+/**-------------------------END-------------------------------------**/
+
+#endif /* UART_H_ */
