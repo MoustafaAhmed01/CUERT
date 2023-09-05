@@ -29,3 +29,6 @@ IV. 076F18R: Correct frame but missing 'E'.
 - Display time in HH:MM:SS AM/PM format, starting from 00:00:00 AM.
 
 This project showcases your coding skills in embedded C, emphasizing efficiency, cleanliness, and robustness. You'll demonstrate integration capabilities by harmonizing multiple system components into a cohesive design.
+
+***Proteus***
+![image](https://github.com/MoustafaAhmed01/CUERT/assets/104157153/ae5cc12b-1ba3-4aef-823b-8eb13ec9189d)
